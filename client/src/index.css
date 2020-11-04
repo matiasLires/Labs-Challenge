@@ -1,0 +1,35 @@
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+}
+body,
+#root{
+    height: 100vh;
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas: "header";
+    grid-template-rows: 5rem 1fr 5rem;
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    grid-area: "header";
+    background-color: black;
+    color: white;
+}
+.header a{
+    color: white;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover{
+    color: #ffc107;
+}
