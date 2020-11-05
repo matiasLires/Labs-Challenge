@@ -104,11 +104,11 @@ Este componente va mostrar un arreglo de productos (obtenidos de la API) usando 
 
 
 
-## Notas
+<!-- ## Notas
 
 Crear un repo nuevo en tu github (privado o público) y compartirlo con `Antonio Tralice <toni@soyhenry.com>` una vez que hayas terminado.
 
 Podes usar cualquier librería extra para resolver el challenge ya sea de front-end o de back-end.
 Recomendamos usar alguna librería de front-end (Boostrap, materialize, etc...).
 
-Tenes cómo máximo dos semanas para completar el challenge.
+Tenes cómo máximo dos semanas para completar el challenge. -->
