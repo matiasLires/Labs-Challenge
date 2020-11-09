@@ -1,13 +1,15 @@
-import React from "react"
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+import NavBar from "./components/NavBar/NavBar";
+
+export default function App() {
+
   return (
-    <div className="grid-container">
-      <header className="header">
-        <a href="/">Mercado Challenge</a>
-      </header>
+    <div>
+      <NavBar />
     </div>
   );
 }
 
-export default App;
+
