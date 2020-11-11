@@ -2,6 +2,8 @@ const server = require("express").Router();
 /* const fetch = require("fetch") */
 const axios = require("axios");
 
+
+
 server.get("/api/search", (req, res) => {
   const element = req.query.q;
   axios
@@ -24,6 +26,8 @@ server.get("/api/search", (req, res) => {
     });
 });
 
+module.exports = server;
+
 /* server.get("/api/search", (req, res) => {
     const elemento = req.query.q
 fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${elemento}`, {
@@ -31,7 +35,6 @@ fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${elemento}`, {
 .then(res => res.json())
 })
  */
-module.exports = server;
 
 /* 
       const resource = prod.data.results ;

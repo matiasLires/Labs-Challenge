@@ -1,11 +1,11 @@
 import React from "react";
 
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 
 import { Navbar, Nav } from 'react-bootstrap';
 
 
-export default function NavBar() {
+export default function NavBar({onSearch}) {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -15,7 +15,7 @@ export default function NavBar() {
           <Nav.Link href="#features">Features</Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
-        <SearchBar />
+        <SearchBar onSearch={onSearch} />
       </Navbar>
     </div>
   );

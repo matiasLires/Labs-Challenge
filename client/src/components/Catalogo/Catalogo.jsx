@@ -1,13 +1,28 @@
-import React from 'react'
-import ProductCard from '../ProductCard/ProductCard'
+import React from "react";
+import ProductCard from "../ProductCard/ProductCard";
 
 export default function Catalogo(props) {
-    const products= props.products
+  const catalogue = props.products;
+  console.log(catalogue)
+  if (props.products) {
     return (
-        <div>
-            {products.map(()=>
-            <ProductCard title={products.title} />
-            )}
-        </div>
-    )
+      <div>
+        {catalogue.map((p) => (
+          <div key={p.id}>
+            <ProductCard
+              thumbnail={p.thumbnail}
+              id={p.id}
+              title={p.title}
+              price={p.price}
+              currency={p.currency_id}
+              condition={p.condition}
+              stock={p.available_quantity}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  } else {
+    return <div>No hay Productos</div>;
+  }
 }
