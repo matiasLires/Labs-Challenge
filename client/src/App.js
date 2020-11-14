@@ -1,7 +1,7 @@
 /* eslint-disable no-const-assign */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -93,7 +93,6 @@ export default function App() {
     const condicion = event.target.value;
     if (condicion === "all") {
       setCondition(condicion);
-      // setProducts(recursos);
     }
     if (condicion === "new") {
       setCondition(condicion);
@@ -136,7 +135,7 @@ export default function App() {
       })
       .catch((err) => console.log(err));
   };
-  // Get current products
+  // Conseguir productos actuales
   const indexOfLastProducts = currentPage * productsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - productsPerPage;
 
@@ -148,7 +147,7 @@ export default function App() {
     indexOfLastProducts
   );
 
-  //caso de definir por cada estado de filtro y orden en particular:
+  //Ej de caso de definir por cada estado de filtro y orden en particular:
   /*   if(sort==="lowest" && condition === "all"){
     currentProducts = products.lowestAll.slice(
       indexOfFirstProducts,
@@ -225,7 +224,7 @@ export default function App() {
     }
   }
 
-  // Change Page
+  // Cambiar pagina
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
