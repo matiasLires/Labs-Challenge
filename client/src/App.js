@@ -1,9 +1,14 @@
 /* eslint-disable no-const-assign */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+/* =================================================================================== */
+/* ================================<       NPM       >================================ */
+
 import React, { useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+/* ================================<   Componentes   >================================ */
 
 import NavBar from "./components/NavBar/NavBar";
 import Pagination from "./components/Pagination/Pagination";
@@ -11,7 +16,13 @@ import Catalogo from "./components/Catalogo/Catalogo";
 import { Container, Navbar } from "react-bootstrap";
 import Filter from "./components/Filter/Filter";
 
+/* ================================<   Javascript   >================================ */
+
 export default function App() {
+
+  /* =======< Estados >======= */
+
+  /*<Productos>*/
   const [products, setProducts] = useState({
     productos: [],
     newProductos: [],
@@ -23,13 +34,15 @@ export default function App() {
     highestAll: [],
     highestUsed: [],
   });
+  /*<Productos por página>*/
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(30);
-
+  const [productsPerPage] = useState(1);
+  /*<Filtro y Orden>*/
   const [condition, setCondition] = useState("all");
   const [sort, setSort] = useState("default");
 
+  /* =======< Ordenamiento >======= */
   const sortProducts = (event) => {
     const sort = event.target.value;
     setSort(sort);
@@ -89,12 +102,13 @@ export default function App() {
     }
   };
 
+  /* =======< Filtrado >======= */
   const filterProducts = (event) => {
     const condicion = event.target.value;
+
     if (condicion === "all") {
       setCondition(condicion);
-    }
-    if (condicion === "new") {
+    } else if (condicion === "new") {
       setCondition(condicion);
       let newProducts = products.productos.filter(
         (prod) => prod.condition === "new"
@@ -103,8 +117,7 @@ export default function App() {
         ...products,
         newProductos: newProducts,
       });
-    }
-    if (condicion === "used") {
+    } else if (condicion === "used") {
       setCondition(condicion);
       let usedProducts = products.productos.filter(
         (prod) => prod.condition === "used"
@@ -116,11 +129,11 @@ export default function App() {
     }
   };
 
+  /* =======< Búsqueda >======= */
   const onSearch = (product) => {
     setLoading(true);
-    axios
-      .get(`http://localhost:5000/api/search?q=${product}`)
-
+    
+    Axios.get(`http://localhost:5000/api/search?q=${product}`)
       .then((res) => {
         if (res.data !== undefined) {
           const recursos = res.data;
@@ -128,6 +141,7 @@ export default function App() {
             ...products,
             productos: recursos,
           });
+
           setLoading(false);
         } else {
           alert("Producto no encontrado");
@@ -135,7 +149,8 @@ export default function App() {
       })
       .catch((err) => console.log(err));
   };
-  // Conseguir productos actuales
+
+  /* =======< Productos por página >======= */
   const indexOfLastProducts = currentPage * productsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - productsPerPage;
 
@@ -147,13 +162,6 @@ export default function App() {
     indexOfLastProducts
   );
 
-  //Ej de caso de definir por cada estado de filtro y orden en particular:
-  /*   if(sort==="lowest" && condition === "all"){
-    currentProducts = products.lowestAll.slice(
-      indexOfFirstProducts,
-      indexOfLastProducts
-    )
-  } */
   if (condition === "all") {
     if (sort === "default") {
       totalProducts = products.productos;
@@ -224,9 +232,20 @@ export default function App() {
     }
   }
 
-  // Cambiar pagina
+/* 
+  //Ej de caso de definir por cada estado de filtro y orden en particular:
+  if(sort==="lowest" && condition === "all"){
+    currentProducts = products.lowestAll.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    )
+  }
+   */
+
+  /* =======< Cambiar página >======= */
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+/* ================================<   Renderizado   >================================ */
   return (
     <div style={{ backgroundColor: "#212529" }}>
       <NavBar onSearch={onSearch} />
@@ -235,7 +254,11 @@ export default function App() {
           expand="lg"
           bg="dark"
           variant="dark"
-          style={{ margin: "5px", borderRadius: "5px" }}
+          style={{
+            margin: "5px",
+            borderRadius: "5px",
+            justifyContent: "space-between",
+          }}
         >
           <Pagination
             productsPerPage={productsPerPage}
@@ -257,6 +280,7 @@ export default function App() {
           style={{
             margin: "5px",
             borderRadius: "5px",
+            marginTop: "80%",
           }}
         >
           <Pagination
