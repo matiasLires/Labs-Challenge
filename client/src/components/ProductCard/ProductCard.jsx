@@ -10,10 +10,10 @@ export default function ProductCard({
   stock,
 }) {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={thumbnail} />
+    <Card style={{ width: "18rem", margin:"20px" }}>
+      <Card.Img variant="top" src={thumbnail} style={{ margin:"auto",width:"200px",height:"200px"}} />
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title><div>{title}</div></Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>
             Precio: {price}

@@ -1,11 +1,13 @@
 html{
     font-size: 100%;
     box-sizing: border-box;
+    
 }
 body,
 #root{
     height: 100vh;
     margin: 0;
+    
 }
 .grid-container {
     display: grid;
@@ -13,6 +15,7 @@ body,
     grid-template-rows: 5rem 1fr 5rem;
     grid-template-columns: 1fr;
     height: 100%;
+    
 }
 .header {
     display: flex;
