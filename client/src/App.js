@@ -16,6 +16,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Pagination from "./components/Pagination/Pagination";
 import Catalogo from "./components/Catalogo/Catalogo";
 import Filter from "./components/Filter/Filter";
+import Presentation from "./components/Presentation/Presentation";
 /* =================================================================================== */
 /* ================================<       JSX       >================================ */
 /* =================================================================================== */
@@ -245,9 +246,9 @@ export default function App() {
 
   /*<>*/
   return (
-    <div className="contenedor">
-      <NavBar onSearch={onSearch} />
-
+    <div className="contain">
+      <NavBar onSearch={onSearch}  className="navbar" />
+      <Presentation />
       <Navbar expand="lg" bg="dark" variant="dark" className="navFilterTop">
         <Pagination
           productsPerPage={productsPerPage}
@@ -263,8 +264,6 @@ export default function App() {
           className="filter"
         />
       </Navbar>
-
-      <div>
         <Catalogo
           product={currentProducts}
           loading={loading}
@@ -272,7 +271,6 @@ export default function App() {
           totalProducts={totalLength}
           paginate={paginate}
         />
-        </div>
         
     </div>
   );

@@ -10,9 +10,9 @@ export default function Catalogo({
   if (loading) {
     return (
       <div>
-        <Card body bg="dark" variant="dark" className="card">
+        <Card body className="loading">
           <div className="spinner">
-            <Spinner animation="border" variant="primary" />
+            <Spinner animation="border" variant="primary"  />
             <h2>Loading...</h2>
           </div>
         </Card>
