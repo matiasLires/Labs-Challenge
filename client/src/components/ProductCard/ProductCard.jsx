@@ -2,7 +2,6 @@
 import React from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import "./ProductCard.css"
-
 export default function ProductCard({
   thumbnail,
   title,
@@ -12,7 +11,7 @@ export default function ProductCard({
   stock,
 }) {
   return (
-    <Card className="card" >
+    <Card style={{ width: "18rem", margin: "20px", borderColor: "cyan" }}>
       <Card.Img
         variant="top"
         src={thumbnail}
