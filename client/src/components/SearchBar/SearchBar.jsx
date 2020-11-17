@@ -23,7 +23,7 @@ export default function SearchBar({ onSearch }) {
           onChange={(e) => setProduct(e.target.value)}
         />
         <Button variant="outline-info" type="submit" value="Search">
-          Search
+          Buscar
         </Button>
       </Form>
     </div>

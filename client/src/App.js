@@ -1,27 +1,27 @@
-/* eslint-disable no-const-assign */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 /* =================================================================================== */
 /* ================================<       NPM       >================================ */
-
+/* =================================================================================== */
 import React, { useState } from "react";
 import Axios from "axios";
+import { Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+/* =================================================================================== */
+/* ================================<       CSS       >================================ */
+/* =================================================================================== */
+import "./App.css";
+/* =================================================================================== */
 /* ================================<   Componentes   >================================ */
-
+/* =================================================================================== */
 import NavBar from "./components/NavBar/NavBar";
 import Pagination from "./components/Pagination/Pagination";
 import Catalogo from "./components/Catalogo/Catalogo";
-import { Container, Navbar } from "react-bootstrap";
 import Filter from "./components/Filter/Filter";
-
-/* ================================<   Javascript   >================================ */
-
+/* =================================================================================== */
+/* ================================<       JSX       >================================ */
+/* =================================================================================== */
 export default function App() {
-
+  /*<>*/
   /* =======< Estados >======= */
-
   /*<Productos>*/
   const [products, setProducts] = useState({
     productos: [],
@@ -37,11 +37,11 @@ export default function App() {
   /*<Productos por página>*/
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(1);
+  const [productsPerPage] = useState(30);
   /*<Filtro y Orden>*/
   const [condition, setCondition] = useState("all");
   const [sort, setSort] = useState("default");
-
+  /*<>*/
   /* =======< Ordenamiento >======= */
   const sortProducts = (event) => {
     const sort = event.target.value;
@@ -101,7 +101,7 @@ export default function App() {
       }
     }
   };
-
+  /*<>*/
   /* =======< Filtrado >======= */
   const filterProducts = (event) => {
     const condicion = event.target.value;
@@ -128,12 +128,12 @@ export default function App() {
       });
     }
   };
-
+  /*<>*/
   /* =======< Búsqueda >======= */
   const onSearch = (product) => {
     setLoading(true);
-    
-    Axios.get(`http://localhost:5000/api/search?q=${product}`)
+
+    Axios.get(`http://localhost:8080/api/search?q=${product}`)
       .then((res) => {
         if (res.data !== undefined) {
           const recursos = res.data;
@@ -149,14 +149,13 @@ export default function App() {
       })
       .catch((err) => console.log(err));
   };
-
+  /*<>*/
   /* =======< Productos por página >======= */
   const indexOfLastProducts = currentPage * productsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - productsPerPage;
-
-  let currentProducts = [];
   let totalProducts = products.productos;
   let totalLength = totalProducts.length;
+  let currentProducts = [];
   currentProducts = totalProducts.slice(
     indexOfFirstProducts,
     indexOfLastProducts
@@ -231,8 +230,7 @@ export default function App() {
       );
     }
   }
-
-/* 
+  /* 
   //Ej de caso de definir por cada estado de filtro y orden en particular:
   if(sort==="lowest" && condition === "all"){
     currentProducts = products.lowestAll.slice(
@@ -241,55 +239,41 @@ export default function App() {
     )
   }
    */
-
+  /*<>*/
   /* =======< Cambiar página >======= */
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-/* ================================<   Renderizado   >================================ */
+  /*<>*/
   return (
-    <div style={{ backgroundColor: "#212529" }}>
+    <div className="contenedor">
       <NavBar onSearch={onSearch} />
-      <Container>
-        <Navbar
-          expand="lg"
-          bg="dark"
-          variant="dark"
-          style={{
-            margin: "5px",
-            borderRadius: "5px",
-            justifyContent: "space-between",
-          }}
-        >
-          <Pagination
-            productsPerPage={productsPerPage}
-            totalProducts={totalLength}
-            paginate={paginate}
-          />
-          <Filter
-            condition={condition}
-            sort={sort}
-            filterProducts={filterProducts}
-            sortProducts={sortProducts}
-          />
-        </Navbar>
-        <Catalogo product={currentProducts} loading={loading} />
-        <Navbar
-          expand="lg"
-          bg="dark"
-          variant="dark"
-          style={{
-            margin: "5px",
-            borderRadius: "5px",
-            marginTop: "80%",
-          }}
-        >
-          <Pagination
-            productsPerPage={productsPerPage}
-            totalProducts={totalLength}
-            paginate={paginate}
-          />
-        </Navbar>
-      </Container>
+
+      <Navbar expand="lg" bg="dark" variant="dark" className="navFilterTop">
+        <Pagination
+          productsPerPage={productsPerPage}
+          totalProducts={totalLength}
+          paginate={paginate}
+          className="pagination"
+        />
+        <Filter
+          condition={condition}
+          sort={sort}
+          filterProducts={filterProducts}
+          sortProducts={sortProducts}
+          className="filter"
+        />
+      </Navbar>
+
+      <div>
+        <Catalogo
+          product={currentProducts}
+          loading={loading}
+          productsPerPage={productsPerPage}
+          totalProducts={totalLength}
+          paginate={paginate}
+        />
+        </div>
+        
     </div>
   );
 }

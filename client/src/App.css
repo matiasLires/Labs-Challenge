@@ -1,0 +1,17 @@
+.container {
+  background-color: #212529;
+  border-radius: 5px;
+}
+
+.navFilterTop {
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.navFilterBotton{
+  margin: 5px;
+  border-radius: 5px;
+  bottom: 0;
+}
+

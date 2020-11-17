@@ -7,6 +7,17 @@ body,
 #root{
     height: 100vh;
     margin: 0;
+    background-color: #212529;
+}
+/* html{
+    font-size: 100%;
+    box-sizing: border-box;
+    
+}
+body,
+#root{
+    height: 100vh;
+    margin: 0;
     
 }
 .grid-container {
@@ -35,4 +46,4 @@ a {
 }
 a:hover{
     color: #ffc107;
-}
+} */
