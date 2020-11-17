@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
+import "./ProductCard.css"
+
 export default function ProductCard({
   thumbnail,
   title,
@@ -10,7 +12,7 @@ export default function ProductCard({
   stock,
 }) {
   return (
-    <Card style={{ width: "18rem", margin: "20px" }}>
+    <Card className="card" >
       <Card.Img
         variant="top"
         src={thumbnail}
@@ -28,7 +30,7 @@ export default function ProductCard({
           <ListGroup.Item>Estado: {condition}</ListGroup.Item>
           <ListGroup.Item>Stock: {stock}</ListGroup.Item>
         </ListGroup>
-        <Button variant="primary">Comprar</Button>
+        <Button variant="outline-info" type="submit" className="buttonProduct">Comprar</Button>
       </Card.Body>
     </Card>
   );

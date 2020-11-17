@@ -1,0 +1,9 @@
+.card{
+    width: "18rem";
+    margin: "20px";
+    border-color: cyan;
+}
+.buttonProduct{
+    background-color: #07252d ;
+    /* background: radial-gradient(#07252d, black); */
+}
