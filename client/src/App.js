@@ -161,7 +161,84 @@ export default function App() {
     indexOfFirstProducts,
     indexOfLastProducts
   );
-
+  //Order for Conditions & Sorts independents
+  //order for all
+  if (condition === "all" && sort === "default" ) {
+    totalProducts = products.productos;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "all" && sort === "lowest") {
+    totalProducts = products.lowestAll;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "all" && sort === "highest") {
+    totalProducts = products.highestAll;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  // order for new
+  if (condition === "new" && sort === "default") {
+    totalProducts = products.newProductos;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "new" && sort === "lowest") {
+    totalProducts = products.lowestNew;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "new" && sort === "highest") {
+    totalProducts = products.highestNew;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  //order for used
+  if (condition === "used" && sort === "default") {
+    totalProducts = products.usedProductos;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "used" && sort === "lowest") {
+    totalProducts = products.lowestUsed;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  if (condition === "used" && sort === "highest") {
+    totalProducts = products.highestUsed;
+    totalLength = totalProducts.length;
+    currentProducts = totalProducts.slice(
+      indexOfFirstProducts,
+      indexOfLastProducts
+    );
+  }
+  /* =================================================================================== */
+  //order for Conditions when Sort depends on THEM.
+  /* 
   if (condition === "all") {
     if (sort === "default") {
       totalProducts = products.productos;
@@ -231,14 +308,6 @@ export default function App() {
       );
     }
   }
-  /* 
-  //Ej de caso de definir por cada estado de filtro y orden en particular:
-  if(sort==="lowest" && condition === "all"){
-    currentProducts = products.lowestAll.slice(
-      indexOfFirstProducts,
-      indexOfLastProducts
-    )
-  }
    */
   /*<>*/
   /* =======< Cambiar página >======= */
@@ -247,7 +316,7 @@ export default function App() {
   /*<>*/
   return (
     <div className="contain">
-      <NavBar onSearch={onSearch}  className="navbar" />
+      <NavBar onSearch={onSearch} className="navbar" />
       <Presentation />
       <Navbar expand="lg" bg="dark" variant="dark" className="navFilterTop">
         <Pagination
@@ -264,14 +333,13 @@ export default function App() {
           className="filter"
         />
       </Navbar>
-        <Catalogo
-          product={currentProducts}
-          loading={loading}
-          productsPerPage={productsPerPage}
-          totalProducts={totalLength}
-          paginate={paginate}
-        />
-        
+      <Catalogo
+        product={currentProducts}
+        loading={loading}
+        productsPerPage={productsPerPage}
+        totalProducts={totalLength}
+        paginate={paginate}
+      />
     </div>
   );
 }

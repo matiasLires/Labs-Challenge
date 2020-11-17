@@ -1,15 +1,13 @@
-html{
-    font-size: 100%;
-    box-sizing: border-box;
-    
+html {
+  font-size: 100%;
+  box-sizing: border-box;
 }
 body,
-#root{
-    height: 100vh;
-    margin: 0;
-    /* background-color: #212529; */
-    background: linear-gradient(black, #07252d, black);
-
+#root {
+  height: 100vh;
+  margin: 0;
+  /* background-color: #212529; */
+  background: linear-gradient(black, #07252d, black);
 }
 /* html{
     font-size: 100%;

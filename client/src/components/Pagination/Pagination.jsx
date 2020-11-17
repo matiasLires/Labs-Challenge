@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Button,ButtonGroup  } from 'react-bootstrap';
+import { Button, ButtonGroup } from "react-bootstrap";
 
 export default function Pagination({
   productsPerPage,
@@ -17,9 +17,15 @@ export default function Pagination({
     <div>
       <ButtonGroup horizontal="true">
         {pageNumbers.map((number) => (
-        <Button variant="outline-info" key={number} onClick={() => paginate(number)}>{number}</Button>
+          <Button
+            variant="outline-info"
+            key={number}
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </Button>
         ))}
-      </ButtonGroup >
+      </ButtonGroup>
     </div>
   );
 }
