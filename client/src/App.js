@@ -38,7 +38,7 @@ export default function App() {
   /*<Productos por página>*/
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(30);
+  const [productsPerPage] = useState(6);
   /*<Filtro y Orden>*/
   const [condition, setCondition] = useState("all");
   const [sort, setSort] = useState("default");

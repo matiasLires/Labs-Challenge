@@ -9,7 +9,7 @@ export default function NavBar({ onSearch }) {
     <div>
       <Navbar bg="dark" variant="dark" className="navbar">
         <Navbar.Brand className="mr-auto" href="#home">
-          Labs Challenge
+          Henry Simple Project
         </Navbar.Brand>
         {/*         <Nav className="mr-auto">
           <Nav.Link href="#home">Home</Nav.Link>

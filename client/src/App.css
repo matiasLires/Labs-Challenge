@@ -4,14 +4,12 @@
 }
 
 .navbar {
-  /* background: linear-gradient(45deg, rgb(0,0,0), #07252d,black); */
   background: radial-gradient(#07252d, black);
 }
 .navFilterTop {
   margin: 5px;
   border-radius: 5px;
   justify-content: space-between;
-  /* background: linear-gradient(45deg, rgb(0,0,0), #07252d,black); */
   background: radial-gradient(#07252d, black);
 }
 
